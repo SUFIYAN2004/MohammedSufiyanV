@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Mohammed Sufiyan V</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: black; /* Black background */
+            color: white; /* White text */
+            font-family: 'Poppins', sans-serif; /* Poppins font */
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            transition: transform 0.3s ease; /* Smooth transition */
+            transform: translateX(-100%); /* Hidden by default */
+            position: fixed; /* Keep sidebar fixed */
+            height: 100%; /* Full height */
+            z-index: 50; /* Layering */
+        }
+
+        .sidebar-open {
+            transform: translateX(0); /* Slide in */
+        }
+
+        /* Overlay styles */
+        .overlay {
+            transition: opacity 0.3s ease; /* Smooth transition for overlay */
+            opacity: 0; /* Hidden by default */
+            pointer-events: none; /* Ignore clicks when hidden */
+        }
+
+        .overlay-visible {
+            opacity: 0.5; /* Semi-transparent overlay */
+            pointer-events: all; /* Allow clicks when visible */
+        }
+
+        /* Icon hover effect */
+        .social-icon {
+            transition: transform 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2); /* Increase size by 20% on hover */
+        }
+
+        /* Sticky navbar styles */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 40; /* Layering above other content */
+            background-color: #1f2937; /* Dark background */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+            margin: 0; /* No margin for navbar */
+            padding: 0; /* No padding for navbar */
+        }
+
+        .nav-link {
+            padding: 0.75rem 1rem; /* Improved padding */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+            border-radius: 0.375rem; /* Rounded corners */
+        }
+
+        .nav-link:hover {
+            background-color: #3b82f6; /* Change background on hover */
+            color: white; /* Change text color on hover */
+        }
+
+        .active {
+            background-color: #3b82f6; /* Highlight active link */
+            color: white; /* Active text color */
+        }
+
+        /* Improved spacing */
+        /* Responsive styles */
+        @media (min-width: 1024px) {
+            .sidebar {
+                transform: translateX(0); /* Show sidebar */
+                width: 16rem; /* Fixed width for larger screens */
+            }
+
+            #toggleButton {
+                display: none; /* Hide toggle button */
+            }
+
+            main {
+                margin-left: 16rem; /* Leave space for the sidebar */
+            }
+        }
+
+        /* Hide navbar on smaller screens */
+        @media (max-width: 1024px) {
+            .navbar {
+                display: none; /* Hide navbar */
+            }
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <div class="flex flex-1 relative">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar w-64 bg-gray-900 shadow-md">
+            <div class="flex flex-col items-center p-4 border-b border-gray-700">
+                <button id="closeButton" class="absolute top-2 right-2 text-white focus:outline-none lg:hidden">
+                    &times; <!-- Close icon -->
+                </button>
+                <img src="s.png" alt="Stylosuf" class="rounded-full mb-2">
+                <h1 class="text-xl font-bold">Mohammed Sufiyan V</h1>
+            </div>
+            <nav class="mt-6">
+                <a href="index.html" class="block py-2 px-4 nav-link" onclick="setActiveLink(event)">About</a>
+                <a href="resume.html" class="block py-2 px-4 nav-link active" onclick="setActiveLink(event)">Resume</a>
+                <a href="portfolio.html" class="block py-2 px-4 nav-link" onclick="setActiveLink(event)">Portfolio</a>
+                <a href="blog.html" class="block py-2 px-4 nav-link" onclick="setActiveLink(event)">Blog</a>
+                <a href="contact.html" class="block py-2 px-4 nav-link" onclick="setActiveLink(event)">Contact</a>
+            </nav>
+
+            <!-- Social Media Links -->
+            <div class="mt-6 flex justify-center">
+                <a href="mailto:stylosuf@gmail.com" class="text-white p-2 hover:text-gray-400 social-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/9677710480" class="text-white p-2 hover:text-gray-400 social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.youtube.com/@SufLearning/" class="text-white p-2 hover:text-gray-400 social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://github.com/Sufiyan2004" class="text-white p-2 hover:text-gray-400 social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mohammedsufiyanv" class="text-white p-2 hover:text-gray-400 social-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+
+                </a>
+            </div>
+        </aside>
+
+        <!-- Overlay -->
+        <div id="overlay" class="overlay fixed inset-0 bg-black"></div>
+
+        <main class="flex-grow p-6 transition-all duration-300 lg:pl-0 lg:pr-6 mt-0">
+            <!-- Toggle Button for Sidebar -->
+            <button id="toggleButton" class="lg:hidden bg-gray-800 p-2 rounded mb-4">
+                <span class="text-white">☰</span> <!-- Hamburger Icon -->
+            </button>
+
+            <!-- Sticky Navbar -->
+            <nav class="navbar sticky top-0">
+                <div class="container mx-auto flex justify-around p-4">
+                    <a href="index.html" class="text-white nav-link" onclick="setActiveLink(event)">About</a>
+                    <a href="resume.html" class="text-white nav-link active" onclick="setActiveLink(event)">Resume</a>
+                    <a href="portfolio.html" class="text-white nav-link" onclick="setActiveLink(event)">Portfolio</a>
+                    <a href="blog.html" class="text-white nav-link" onclick="setActiveLink(event)">Blog</a>
+                    <a href="contact.html" class="text-white nav-link" onclick="setActiveLink(event)">Contact</a>
+                </div>
+            </nav>
+
+            <div class="max-w-4xl mx-auto p-6 bg-gray-800 rounded-lg shadow-md mt-6">
+                <h1 class="text-2xl font-bold mb-4 text-center">Mohammed Sufiyan V</h1>
+                <h2 class="text-xl font-semibold mb-4">Contact Information</h2>
+                <p>Email: Stylosuf@gmail.com</p>
+                <p>Phone: +91 9677710480</p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/mohammedsufiyanv" class="text-blue-400">mohammedsufiyanv</a></p>
+                <p>YouTube Channel: <a href="https://www.youtube.com/@SufLearning/" class="text-blue-400">SufLearning</a></p>
+
+                <h2 class="text-xl font-semibold mt-6 mb-4">Skills</h2>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>Programming Languages: Python, C, C++, HTML, CSS, JavaScript</li>
+                    <li>Frameworks: Flask, Django, Flutter, Kivy, Flet</li>
+                    <li>Data Analysis: NumPy, Pandas, Matplotlib, Scikit-learn</li>
+                    <li>Databases: SQLite3, MongoDB</li>
+                    <li>Tools: Git, OpenCV</li>
+                </ul>
+
+                <h2 class="text-xl font-semibold mt-6 mb-4">Education</h2>
+                <p>BCA Student, Thiruvalluvar University, Expected Graduation: 2026</p>
+
+                <h2 class="text-xl font-semibold mt-6 mb-4">Experience</h2>
+                <p>Currently seeking opportunities as a fresher in software development.</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const closeButton = document.getElementById('closeButton');
+
+        toggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('sidebar-open');
+            overlay.classList.toggle('overlay-visible');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('sidebar-open');
+            overlay.classList.remove('overlay-visible');
+        });
+
+        closeButton.addEventListener('click', () => {
+            sidebar.classList.remove('sidebar-open');
+            overlay.classList.remove('overlay-visible');
+        });
+
+        function setActiveLink(event) {
+            // Remove active class from all links
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Add active class to the clicked link
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
