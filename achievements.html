@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Mohammed Sufiyan V</title>
+    <title>Achievements - Mohammed Sufiyan V</title>
+    <meta name="description" content="Explore the achievements of Mohammed Sufiyan V in various symposiums and competitions.">
+    <meta name="keywords" content="Achievements, Symposium, Mohammed Sufiyan V">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -23,6 +25,8 @@
             position: fixed; /* Keep sidebar fixed */
             height: 100%; /* Full height */
             z-index: 50; /* Layering */
+            background-color: #1f2937; /* Dark sidebar background */
+            color: white; /* White text color */
         }
 
         .sidebar-open {
@@ -61,13 +65,6 @@
             padding: 0; /* No padding for navbar */
         }
 
-        /* Hide navbar on smaller screens */
-        @media (max-width: 1024px) {
-            .navbar {
-                display: none; /* Hide navbar */
-            }
-        }
-
         .nav-link {
             padding: 0.75rem 1rem; /* Improved padding */
             transition: background-color 0.3s, color 0.3s; /* Smooth transition */
@@ -84,8 +81,42 @@
             color: white; /* Active text color */
         }
 
-        /* Improved spacing */
+        /* Certificate Card Styles */
+        .certificate-card {
+            background-color: #1f2937; /* Dark background */
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            cursor: pointer; /* Indicate that it's clickable */
+        }
+
+        .certificate-card:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        .certificate-card p {
+            display: none; /* Hide the paragraph by default */
+            margin-top: 10px;
+        }
+
+        .certificate-card img {
+            width: 100%; /* Ensure the image fits the card */
+            border-radius: 8px;
+        }
+
+        .certificate-card .hint {
+            color: #3b82f6; /* Hint text color */
+            font-size: 0.875rem; /* Small text size */
+            margin-top: 5px;
+        }
+
         /* Responsive styles */
+        @media (max-width: 1023px) {
+            .navbar {
+                display: none; /* Hide navbar on mobile */
+            }
+        }
+
         @media (min-width: 1024px) {
             .sidebar {
                 transform: translateX(0); /* Show sidebar */
@@ -98,6 +129,10 @@
 
             main {
                 margin-left: 16rem; /* Leave space for the sidebar */
+            }
+
+            .navbar {
+                display: flex; /* Show navbar on larger screens */
             }
         }
     </style>
@@ -115,13 +150,14 @@
                 <h1 class="text-xl font-bold">Mohammed Sufiyan V</h1>
             </div>
             <nav class="mt-6">
-                <a href="index.html" class="block py-2 px-4 nav-link active">About</a>
+                <a href="index.html" class="block py-2 px-4 nav-link">About</a>
                 <a href="resume.html" class="block py-2 px-4 nav-link">Resume</a>
                 <a href="portfolio.html" class="block py-2 px-4 nav-link">Portfolio</a>
                 <a href="blog.html" class="block py-2 px-4 nav-link">Blog</a>
-                <a href="achievements.html" class="block py-2 px-4 nav-link">Achievements</a>
+                <a href="achievements.html" class="block py-2 px-4 nav-link active">Achievements</a>
                 <a href="contact.html" class="block py-2 px-4 nav-link">Contact</a>
             </nav>
+
             <!-- Social Media Links -->
             <div class="mt-6 flex justify-center">
                 <a href="mailto:stylosuf@gmail.com" class="text-white p-2 hover:text-gray-400 social-icon">
@@ -139,7 +175,6 @@
                 <a href="https://www.linkedin.com/in/mohammedsufiyanv" class="text-white p-2 hover:text-gray-400 social-icon">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                
             </div>
         </aside>
 
@@ -155,51 +190,32 @@
             <!-- Sticky Navbar -->
             <nav class="navbar sticky top-0">
                 <div class="container mx-auto flex justify-around p-4">
-                    <a href="index.html" class="text-white nav-link active" onclick="setActiveLink(event)">About</a>
-                    <a href="resume.html" class="text-white nav-link" onclick="setActiveLink(event)">Resume</a>
-                    <a href="portfolio.html" class="text-white nav-link" onclick="setActiveLink(event)">Portfolio</a>
-                    <a href="blog.html" class="text-white nav-link" onclick="setActiveLink(event)">Blog</a>
-                    <a href="contact.html" class="text-white nav-link" onclick="setActiveLink(event)">Contact</a>
+                    <a href="index.html" class="text-white nav-link">About</a>
+                    <a href="resume.html" class="text-white nav-link">Resume</a>
+                    <a href="portfolio.html" class="text-white nav-link">Portfolio</a>
+                    <a href="blog.html" class="text-white nav-link">Blog</a>
+                    <a href="achievements.html" class="text-white nav-link active">Achievements</a>
+                    <a href="contact.html" class="text-white nav-link">Contact</a>
                 </div>
             </nav>
 
+            <!-- Achievements Section -->
             <div class="max-w-4xl mx-auto p-6 bg-gray-800 rounded-lg shadow-md mt-6">
-                <div class="flex flex-col items-center mb-6">
-                    <img src="images/sufiyan.png" alt="Mohammed Sufiyan V" class="rounded-lg mb-2">
-                    <h1 class="text-2xl font-bold text-center">Hi, I’m Mohammed Sufiyan V</h1>
-                </div>
-                <p class="mb-4 leading-relaxed">
-                    I am a BCA student with a passion for programming. I started my journey with Python, which remains my first programming language. Since then, I have expanded my skills to include C and C++, along with data structures. I have experience with Flutter and foundational knowledge in front-end development using HTML, CSS, and basic JavaScript.
-                </p>
-                <p class="mb-4 leading-relaxed">
-                    In terms of databases, I am proficient in SQLite3 and have beginner-level experience with MongoDB. I have explored various libraries and frameworks, starting with Python’s Tkinter and Turtle graphics, followed by an introductory overview of Kivy and Flet. I have also gained beginner-level skills in data manipulation and analysis using NumPy, Pandas, Matplotlib, and Scikit-learn.
-                </p>
-                <p class="mb-4 leading-relaxed">
-                    On the backend, I enjoy working with Flask and have some basic knowledge of Django. Additionally, I have explored OpenCV and have recently begun learning Chainlit.
-                </p>
-                <p class="mb-4 leading-relaxed">
-                    I am eager to continue developing my skills and contributing to projects that challenge me and allow me to grow as a programmer.
-                </p>
-            </div>
-
-            <!-- What I'm Doing Section -->
-            <div class="max-w-4xl mx-auto p-6 bg-gray-800 rounded-lg shadow-md mt-10 mb-0">
-                <h2 class="text-2xl font-bold mb-6 text-center">What I'm Doing</h2>
+                <h2 class="text-2xl font-bold mb-4 text-center">Symposium Achievements</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-gray-700 p-4 rounded-lg text-center">
-                        <img src="images/web.jpeg" alt="Web Development Icon" class="mx-auto mb-2">
-                        <h3 class="font-semibold">Web Development</h3>
-                        <p class="text-sm">Creating responsive websites using HTML, CSS, and JavaScript.</p>
+                    <div class="certificate-card" onclick="toggleDetails(this)">
+                        <img src="images/first.jpg" alt="First Symposium Achievement" class="rounded">
+                        <div class="hint">Click the image for more details</div>
+                        <p class="text-gray-400">I participated in a symposium at Global College of Arts and Science - Women, Veppur (near Arcot), Ranipet-632509 on 26-02-2024. I am thrilled to announce that I won the 1st prize in debugging in Python at the state level.</p>
                     </div>
-                    <div class="bg-gray-700 p-4 rounded-lg text-center">
-                        <img src="images/app.jpeg" alt="App Development Icon" class="mx-auto mb-2">
-                        <h3 class="font-semibold">App Development</h3>
-                        <p class="text-sm">Building applications with Python Kivy, Flet, and Flutter.</p>
+                    <div class="certificate-card" onclick="toggleDetails(this)">
+                        <img src="images/third.jpg" alt="Second Symposium Achievement" class="rounded">
+                        <div class="hint">Click the image for more details</div>
+                        <p class="text-gray-400">Before this, I started my symposium journey at Voorhees College on 16-02-2024. I am proud to share that I secured the Third prize in debugging and built a program.</p>
                     </div>
-                    <div class="bg-gray-700 p-4 rounded-lg text-center">
-                        <img src="images/analysis.jpeg" alt="Data Analysis Icon" class="mx-auto mb-2">
-                        <h3 class="font-semibold">Data Analysis</h3>
-                        <p class="text-sm">Performing data analysis and manipulation using NumPy, Pandas, Matplotlib, and Scikit-learn.</p>
+                    <div class="certificate-card" onclick="toggleDetails(this)">
+                        <img src="images/college.jpg" alt="Third Symposium Achievement" class="rounded">
+
                     </div>
                 </div>
             </div>
@@ -207,35 +223,31 @@
     </div>
 
     <script>
+        // Toggle sidebar visibility
         const toggleButton = document.getElementById('toggleButton');
         const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
         const closeButton = document.getElementById('closeButton');
+        const overlay = document.getElementById('overlay');
 
-        toggleButton.addEventListener('click', () => {
+        toggleButton.addEventListener('click', function() {
             sidebar.classList.toggle('sidebar-open');
             overlay.classList.toggle('overlay-visible');
         });
 
-        overlay.addEventListener('click', () => {
+        closeButton.addEventListener('click', function() {
             sidebar.classList.remove('sidebar-open');
             overlay.classList.remove('overlay-visible');
         });
 
-        closeButton.addEventListener('click', () => {
+        overlay.addEventListener('click', function() {
             sidebar.classList.remove('sidebar-open');
             overlay.classList.remove('overlay-visible');
         });
 
-        function setActiveLink(event) {
-            // Remove active class from all links
-            const links = document.querySelectorAll('.nav-link');
-            links.forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Add active class to the clicked link
-            event.target.classList.add('active');
+        // Toggle details on image click
+        function toggleDetails(card) {
+            const paragraph = card.querySelector('p');
+            paragraph.style.display = paragraph.style.display === 'none' ? 'block' : 'none';
         }
     </script>
 </body>
