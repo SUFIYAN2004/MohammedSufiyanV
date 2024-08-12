@@ -10,98 +10,140 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: black; /* Black background */
-            color: white; /* White text */
-            font-family: 'Poppins', sans-serif; /* Poppins font */
-            overflow-x: hidden; /* Prevent horizontal scrolling */
+            background-color: black;
+            /* Black background */
+            color: white;
+            /* White text */
+            font-family: 'Poppins', sans-serif;
+            /* Poppins font */
+            overflow-x: hidden;
+            /* Prevent horizontal scrolling */
         }
 
         /* Sidebar styles */
         .sidebar {
-            transition: transform 0.3s ease; /* Smooth transition */
-            transform: translateX(-100%); /* Hidden by default */
-            position: fixed; /* Keep sidebar fixed */
-            height: 100%; /* Full height */
-            z-index: 50; /* Layering */
+            transition: transform 0.3s ease;
+            /* Smooth transition */
+            transform: translateX(-100%);
+            /* Hidden by default */
+            position: fixed;
+            /* Keep sidebar fixed */
+            height: 100%;
+            /* Full height */
+            z-index: 50;
+            /* Layering */
         }
 
         .sidebar-open {
-            transform: translateX(0); /* Slide in */
+            transform: translateX(0);
+            /* Slide in */
         }
 
         /* Overlay styles */
         .overlay {
-            transition: opacity 0.3s ease; /* Smooth transition for overlay */
-            opacity: 0; /* Hidden by default */
-            pointer-events: none; /* Ignore clicks when hidden */
+            transition: opacity 0.3s ease;
+            /* Smooth transition for overlay */
+            opacity: 0;
+            /* Hidden by default */
+            pointer-events: none;
+            /* Ignore clicks when hidden */
         }
 
         .overlay-visible {
-            opacity: 0.5; /* Semi-transparent overlay */
-            pointer-events: all; /* Allow clicks when visible */
+            opacity: 0.5;
+            /* Semi-transparent overlay */
+            pointer-events: all;
+            /* Allow clicks when visible */
         }
 
         /* Icon hover effect */
         .social-icon {
-            transition: transform 0.3s ease; /* Smooth transition for hover effect */
+            transition: transform 0.3s ease;
+            /* Smooth transition for hover effect */
         }
 
         .social-icon:hover {
-            transform: scale(1.2); /* Increase size by 20% on hover */
+            transform: scale(1.2);
+            /* Increase size by 20% on hover */
         }
 
         /* Sticky navbar styles */
         .navbar {
             position: sticky;
             top: 0;
-            z-index: 40; /* Layering above other content */
-            background-color: #1f2937; /* Dark background */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
-            margin: 0; /* No margin for navbar */
-            padding: 0; /* No padding for navbar */
+            z-index: 40;
+            /* Layering above other content */
+            background-color: #1f2937;
+            /* Dark background */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            /* Add shadow for depth */
+            margin: 0;
+            /* No margin for navbar */
+            padding: 0;
+            /* No padding for navbar */
         }
 
         .nav-link {
-            padding: 0.75rem 1rem; /* Improved padding */
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
-            border-radius: 0.375rem; /* Rounded corners */
+            padding: 0.75rem 1rem;
+            /* Improved padding */
+            transition: background-color 0.3s, color 0.3s;
+            /* Smooth transition */
+            border-radius: 0.375rem;
+            /* Rounded corners */
         }
 
         .nav-link:hover {
-            background-color: #3b82f6; /* Change background on hover */
-            color: white; /* Change text color on hover */
+            background-color: #3b82f6;
+            /* Change background on hover */
+            color: white;
+            /* Change text color on hover */
         }
 
         .active {
-            background-color: #3b82f6; /* Highlight active link */
-            color: white; /* Active text color */
+            background-color: #3b82f6;
+            /* Highlight active link */
+            color: white;
+            /* Active text color */
         }
 
         /* Modal styles */
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 100; /* Sit on top */
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 100;
+            /* Sit on top */
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
-            justify-content: center; /* Center the modal */
-            align-items: center; /* Center the modal */
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Black w/ opacity */
+            justify-content: center;
+            /* Center the modal */
+            align-items: center;
+            /* Center the modal */
         }
 
         .modal-open {
-            display: flex; /* Show modal */
+            display: flex;
+            /* Show modal */
         }
 
         .modal-content {
-            background-color: #1f2937; /* Dark background for modal content */
+            background-color: #1f2937;
+            /* Dark background for modal content */
             padding: 20px;
             border-radius: 8px;
-            max-width: 400px; /* Reduced maximum width */
-            width: 80%; /* Responsive width */
+            max-width: 400px;
+            /* Reduced maximum width */
+            width: 80%;
+            /* Responsive width */
             position: relative;
         }
 
@@ -110,32 +152,40 @@
             top: 10px;
             right: 10px;
             cursor: pointer;
-            font-size: 1.5rem; /* Increase size of close icon */
-            color: white; /* Close icon color */
-            z-index: 101; /* Ensure it's above the modal content */
+            font-size: 1.5rem;
+            /* Increase size of close icon */
+            color: white;
+            /* Close icon color */
+            z-index: 101;
+            /* Ensure it's above the modal content */
         }
 
         /* Improved spacing */
         /* Responsive styles */
         @media (min-width: 1024px) {
             .sidebar {
-                transform: translateX(0); /* Show sidebar */
-                width: 16rem; /* Fixed width for larger screens */
+                transform: translateX(0);
+                /* Show sidebar */
+                width: 16rem;
+                /* Fixed width for larger screens */
             }
 
             #toggleButton {
-                display: none; /* Hide toggle button */
+                display: none;
+                /* Hide toggle button */
             }
 
             main {
-                margin-left: 16rem; /* Leave space for the sidebar */
+                margin-left: 16rem;
+                /* Leave space for the sidebar */
             }
         }
 
         /* Hide navbar on smaller screens */
         @media (max-width: 1024px) {
             .navbar {
-                display: none; /* Hide navbar */
+                display: none;
+                /* Hide navbar */
             }
         }
     </style>
@@ -174,7 +224,8 @@
                 <a href="https://github.com/Sufiyan2004" class="text-white p-2 hover:text-gray-400 social-icon">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/mohammedsufiyanv" class="text-white p-2 hover:text-gray-400 social-icon">
+                <a href="https://www.linkedin.com/in/mohammedsufiyanv"
+                    class="text-white p-2 hover:text-gray-400 social-icon">
                     <i class="fab fa-linkedin"></i>
                 </a>
             </div>
@@ -204,42 +255,63 @@
             <div class="max-w-4xl mx-auto p-6 bg-gray-800 rounded-lg shadow-md mt-6">
                 <h2 class="text-2xl font-bold mb-6 text-center">Projects</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project" onclick="openModal('Student Management System', 'A comprehensive application designed to manage student information, including personal details, academic performance, and attendance records. It allows teachers and administrators to track and analyze student progress efficiently.', 'images/student.jpeg')">
+                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project"
+                        onclick="openModal('Student Management System', 'A comprehensive application designed to manage student information, including personal details, academic performance, and attendance records. It allows teachers and administrators to track and analyze student progress efficiently.', 'images/student.jpeg')">
                         <img src="images/student.jpeg" alt="Student Management System" class="mb-2 rounded">
                         <h3 class="font-semibold">Student Management System</h3>
                     </div>
-                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project" onclick="openModal('Friends Management System', 'A user-friendly application that helps users manage their personal connections. It allows users to add, edit, and delete friends, as well as categorize them based on various criteria, ensuring easy access and organization of personal contacts.', 'images/friend.jpeg')">
+                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project"
+                        onclick="openModal('Friends Management System', 'A user-friendly application that helps users manage their personal connections. It allows users to add, edit, and delete friends, as well as categorize them based on various criteria, ensuring easy access and organization of personal contacts.', 'images/friend.jpeg')">
                         <img src="images/friend.jpeg" alt="Friends Management System" class="mb-2 rounded">
                         <h3 class="font-semibold">Friends Management System</h3>
                     </div>
-                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project" onclick="openModal('To-Do List', 'A simple and intuitive task management application that allows users to create, edit, and delete tasks. Users can prioritize tasks, set deadlines, and mark them as complete, helping them stay organized and focused on their daily activities.', 'images/todo.jpeg')">
+                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project"
+                        onclick="openModal('To-Do List', 'A simple and intuitive task management application that allows users to create, edit, and delete tasks. Users can prioritize tasks, set deadlines, and mark them as complete, helping them stay organized and focused on their daily activities.', 'images/todo.jpeg')">
                         <img src="images/todo.jpeg" alt="To-Do List" class="mb-2 rounded">
                         <h3 class="font-semibold">To-Do List</h3>
                     </div>
-                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project" onclick="openModal('Attendance Management System', 'An application that simplifies the process of tracking student attendance in educational institutions. Teachers can mark attendance for each class session, generate attendance reports, and monitor student participation over time.', 'images/attendance.jpeg')">
+                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project"
+                        onclick="openModal('Attendance Management System', 'An application that simplifies the process of tracking student attendance in educational institutions. Teachers can mark attendance for each class session, generate attendance reports, and monitor student participation over time.', 'images/attendance.jpeg')">
                         <img src="images/attendance.jpeg" alt="Attendance Management System" class="mb-2 rounded">
                         <h3 class="font-semibold">Attendance Management System</h3>
                     </div>
-                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project" onclick="openModal('Calculator', 'A basic arithmetic calculator that performs fundamental operations like addition, subtraction, multiplication, and division. This application can serve as a standalone tool or be integrated into other projects requiring mathematical calculations.', 'images/calculator.jpeg')">
+                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project"
+                        onclick="openModal('Calculator', 'A basic arithmetic calculator that performs fundamental operations like addition, subtraction, multiplication, and division. This application can serve as a standalone tool or be integrated into other projects requiring mathematical calculations.', 'images/calculator.jpeg')">
                         <img src="images/calculator.jpeg" alt="Calculator" class="mb-2 rounded">
                         <h3 class="font-semibold">Calculator</h3>
                     </div>
-                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project" onclick="openModal('Text-to-Speech', 'An application that converts written text into spoken words using various text-to-speech libraries. This project can be beneficial for users with visual impairments or those who prefer auditory learning.', 'images/text-to-speech.jpg')">
+                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project"
+                        onclick="openModal('Text-to-Speech', 'An application that converts written text into spoken words using various text-to-speech libraries. This project can be beneficial for users with visual impairments or those who prefer auditory learning.', 'images/text-to-speech.jpg')">
                         <img src="images/text-to-speech.jpg" alt="Text-to-Speech" class="mb-2 rounded">
                         <h3 class="font-semibold">Text-to-Speech</h3>
                     </div>
-                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project" onclick="openModal('Chatbot', 'An interactive chatbot built using Python that simulates conversation with users. It can answer questions, provide information, and assist with tasks, making it a valuable tool for customer support or personal assistance.', 'images/chatbot.png')">
+                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project"
+                        onclick="openModal('Chatbot', 'An interactive chatbot built using Python that simulates conversation with users. It can answer questions, provide information, and assist with tasks, making it a valuable tool for customer support or personal assistance.', 'images/chatbot.png')">
                         <img src="images/chatbot.png" alt="Chatbot" class="mb-2 rounded">
                         <h3 class="font-semibold">Chatbot</h3>
                     </div>
-                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project" onclick="openModal('Student Report Visualizations', 'A project that visualizes student performance data through charts and graphs. This application helps educators and students analyze performance trends, identify areas for improvement, and make data-driven decisions regarding academic progress.', 'images/visuals.jpeg')">
+                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project"
+                        onclick="openModal('Student Report Visualizations', 'A project that visualizes student performance data through charts and graphs. This application helps educators and students analyze performance trends, identify areas for improvement, and make data-driven decisions regarding academic progress.', 'images/visuals.jpeg')">
                         <img src="images/visuals.jpeg" alt="Student Report Visualizations" class="mb-2 rounded">
                         <h3 class="font-semibold">Student Report Visualizations</h3>
                     </div>
-                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project" onclick="openModal('Python Compiler', 'A simple online Python compiler that allows users to write and execute Python code in their web browsers. This tool is helpful for learners and developers looking to test code snippets quickly without needing to install a local development environment.', 'images/compiler.jpeg')">
+                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project"
+                        onclick="openModal('Python Compiler', 'A simple online Python compiler that allows users to write and execute Python code in their web browsers. This tool is helpful for learners and developers looking to test code snippets quickly without needing to install a local development environment.', 'images/compiler.jpeg')">
                         <img src="images/compiler.jpeg" alt="Python Compiler" class="mb-2 rounded">
                         <h3 class="font-semibold">Python Compiler</h3>
                     </div>
+                    <!-- New Projects -->
+                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project"
+                        onclick="openModal('Multi-User Real-Time Chat App', 'A multi-user real-time chat application built with Python, featuring a modern and user-friendly GUI. Users can join chat rooms, send messages, and receive real-time updates. Ideal for group discussions and team collaborations.', 'images/chat.png')">
+                        <img src="images/chat.png" alt="Multi-User Real-Time Chat App" class="mb-2 rounded">
+                        <h3 class="font-semibold">Multi-User Real-Time Chat App</h3>
+                    </div>
+                    <div class="bg-gray-700 p-4 rounded-lg cursor-pointer project"
+                        onclick="openModal('Video to GIF Converter', 'A video to GIF converter application built with Flask, MongoDB, and MoviePy. This tool allows users to upload video files and convert them into GIFs with customizable options for size and duration.', 'images/gif.png')">
+                        <img src="images/gif.png" alt="Video to GIF Converter" class="mb-2 rounded">
+                        <h3 class="font-semibold">Video to GIF Converter</h3>
+                    </div>
+
                 </div>
             </div>
         </main>
