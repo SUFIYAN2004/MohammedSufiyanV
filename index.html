@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUFIYAN // ENGINE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* === CRITICAL RESET & PERFORMANCE VARIABLES === */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+:root {
+    --bg-void: #020204;      /* Deep Onyx Black */
+    --bg-matrix: #0a0b0e;    /* Dark Steel Charcoal */
+    --accent-core: #71717a;  /* Muted Zinc Silver */
+    --accent-neon: #e4e4e7;  /* Brilliant Chrome Silver */
+    --accent-glow: rgba(228, 228, 231, 0.2);
+    --silver-bright: #ffffff;/* Pure White Crystal */
+    --silver-matte: #a1a1aa; /* Brushed Aluminum Secondary */
+    --green-signal: #10b981;
+    --amber-warn: #f59e0b;
+    --text-pure: #f4f4f5;    /* Liquid Silver Text */
+    --text-dim: #71717a;     /* Muted Iron Text */
+    --border-hacker: rgba(228, 228, 231, 0.15);
+    --glass-plate: rgba(10, 11, 14, 0.75);
+    --cubic-master: cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-void);
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--bg-void);
+    color: var(--text-pure);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* === LAYER 0: CHROMIUM PARTICLE CONSTELLATION BACKGROUND === */
+#engine-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, var(--bg-matrix) 0%, var(--bg-void) 100%);
+}
+
+/* === LAYER 1: FLOATING CHROME NAVIGATION STRIP === */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(2, 2, 4, 0.6);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-bottom: 1px solid rgba(228, 228, 231, 0.08);
+    transition: all 0.4s var(--cubic-master);
+}
+
+.brand-kernel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.brand-text {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, var(--silver-bright), var(--silver-matte));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-matrix {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-node {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s var(--cubic-master);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-node::before {
+    content: '// ';
+    color: var(--accent-neon);
+    opacity: 0;
+    transition: all 0.3s var(--cubic-master);
+}
+
+.nav-node:hover {
+    color: var(--silver-bright);
+    text-shadow: 0 0 8px rgba(248, 250, 252, 0.4);
+}
+
+.nav-node:hover::before {
+    opacity: 1;
+}
+
+/* === LAYER 2: INTRODUCTORY HERO SECTOR === */
+#hero-viewport {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9rem 2rem 5rem;
+    position: relative;
+}
+
+.hero-cluster {
+    max-width: 1100px;
+    width: 100%;
+    z-index: 10;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(228, 228, 231, 0.03);
+    border: 1px solid var(--border-hacker);
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    margin-bottom: 2.5rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.signal-blip {
+    width: 8px;
+    height: 8px;
+    background: var(--silver-matte);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--silver-bright);
+    animation: blipTrigger 1.8s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.status-badge span {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--silver-bright);
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.architect-title {
+    font-size: clamp(3rem, 10vw, 7.5rem);
+    font-weight: 800;
+    line-height: 0.85;
+    letter-spacing: -5px;
+    margin-bottom: 2rem;
+}
+
+.title-row {
+    display: block;
+    overflow: hidden;
+}
+
+.title-row.primary { 
+    color: var(--silver-bright); 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+.title-row.gradient {
+    background: linear-gradient(135deg, var(--silver-bright) 0%, var(--silver-matte) 60%, var(--accent-core) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sub-mono {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--silver-matte);
+    margin-bottom: 2rem;
+    letter-spacing: 4px;
+    font-weight: 600;
+}
+
+.sub-mono span {
+    color: var(--accent-neon);
+}
+
+.manifesto-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #cbd5e1;
+    max-width: 720px;
+    margin-bottom: 4rem;
+    font-weight: 400;
+}
+
+/* === METRIC TELEMETRY GRID === */
+.telemetry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin-bottom: 4.5rem;
+    max-width: 850px;
+    border-left: 2px solid var(--accent-core);
+    padding-left: 2rem;
+}
+
+.telemetry-node {
+    display: flex;
+    flex-direction: column;
+}
+
+.telemetry-data {
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-weight: 800;
+    color: var(--silver-bright);
+    font-family: 'Space Mono', monospace;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.telemetry-meta {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    font-weight: 700;
+    font-family: 'Space Mono', monospace;
+}
+
+/* === ACTION TRIGGER DESIGN === */
+.action-orchestrator {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.hacker-trigger {
+    position: relative;
+    padding: 1.2rem 2.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.4s var(--cubic-master);
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hacker-trigger.solid {
+    background: var(--text-pure);
+    color: var(--bg-void);
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
+    border: 1px solid transparent;
+}
+
+.hacker-trigger.solid:hover {
+    transform: translateY(-3px);
+    background: var(--silver-bright);
+    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.25);
+    border-color: var(--accent-neon);
+}
+
+.hacker-trigger.wireframe {
+    background: rgba(255, 255, 255, 0.01);
+    color: var(--silver-bright);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.hacker-trigger.wireframe:hover {
+    transform: translateY(-3px);
+    border-color: var(--silver-bright);
+    color: var(--silver-bright);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+/* === STRUCTURAL CONTROLLERS === */
+section {
+    padding: 9rem 2rem;
+    position: relative;
+}
+
+.section-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-header-panel {
+    margin-bottom: 5rem;
+}
+
+.panel-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: var(--silver-bright);
+    line-height: 1;
+}
+
+.panel-title span {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(248, 250, 252, 0.4);
+}
+
+/* === TECH MATRIX DESIGN === */
+.matrix-grid-skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+}
+
+.cluster-card {
+    background: var(--glass-plate);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.5s var(--cubic-master);
+}
+
+.cluster-card:hover {
+    border-color: var(--accent-neon);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.05);
+}
+
+.cluster-card-label {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--silver-matte);
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.token-vault {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.token {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: #cbd5e1;
+    font-family: 'Space Mono', monospace;
+    transition: all 0.3s ease;
+}
+
+.cluster-card:hover .token {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* === PIPELINE BLOCKS (PROJECTS) === */
+.pipeline-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+.pipeline-node {
+    background: var(--glass-plate);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 24px;
+    padding: 3rem;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    transition: all 0.6s var(--cubic-master);
+    position: relative;
+    overflow: hidden;
+}
+
+.pipeline-node::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent 40%, transparent 60%, rgba(248, 250, 252, 0.15));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.pipeline-node:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.02);
+}
+
+.pipeline-node:hover::after {
+    opacity: 1;
+}
+
+.node-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.node-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--silver-bright);
+    letter-spacing: -0.5px;
+}
+
+.node-badge-array {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.sys-badge {
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.sys-badge.prime { background: rgba(255, 255, 255, 0.08); color: var(--silver-bright); border: 1px solid rgba(255, 255, 255, 0.15); }
+.sys-badge.active { background: rgba(16, 185, 129, 0.08); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.2); }
+.sys-badge.hardware { background: rgba(255, 255, 255, 0.05); color: var(--silver-matte); border: 1px solid rgba(255, 255, 255, 0.1); }
+
+.node-summary {
+    font-size: 1.05rem;
+    color: #cbd5e1;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 850px;
+}
+
+.metric-dashboard {
+    display: flex;
+    gap: 3.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding: 1.25rem 2rem;
+    background: rgba(255, 255, 255, 0.01);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dashboard-unit { display: flex; flex-direction: column; }
+.dashboard-val { font-size: 1.4rem; font-weight: 700; color: var(--silver-bright); font-family: 'Space Mono', monospace; }
+.dashboard-lbl { font-size: 0.65rem; color: var(--text-dim); letter-spacing: 1px; margin-top: 4px; text-transform: uppercase; font-family: 'Space Mono', monospace; }
+
+.node-tech-index { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.index-token { font-size: 0.65rem; font-family: 'Space Mono', monospace; color: var(--silver-matte); background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 0.2rem 0.6rem; border-radius: 4px; }
+
+.node-link-system {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-family: 'Space Mono', monospace;
+    color: var(--silver-matte);
+    text-decoration: none;
+    margin-top: 1.5rem;
+    transition: color 0.2s, transform 0.2s;
+    word-break: break-all;
+}
+
+.node-link-system:hover { color: var(--silver-bright); transform: translateX(4px); }
+.node-link-system::after { content: ' ↗'; font-size: 1em; font-weight: bold; }
+
+/* === SVM ALGORITHM REPRESENTATION GRAPHIC === */
+.svm-container {
+    margin: 2.5rem 0 1.5rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.svm-svg {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+}
+
+/* === EXPERIENCE TIMELINE ARCHIVE === */
+#experience-stream { background: rgba(4, 4, 6, 0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.stream-pipeline { display: flex; flex-direction: column; gap: 2rem; }
+
+.stream-node-card {
+    background: var(--glass-plate);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.stream-node-card:hover { border-color: rgba(148, 163, 184, 0.3); }
+.stream-left-interface { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.04); padding-bottom: 1.25rem; }
+.stream-timeline-stamp { font-family: 'Space Mono', monospace; font-size: 0.9rem; color: var(--silver-bright); letter-spacing: 1px; font-weight: 700; }
+.stream-tag-status { display: inline-block; padding: 0.25rem 0.85rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 4px; font-size: 0.65rem; font-family: 'Space Mono', monospace; color: var(--silver-matte); text-transform: uppercase; }
+
+.stream-right-interface { width: 100%; }
+.stream-title-text { font-size: 1.4rem; font-weight: 700; color: var(--silver-bright); margin-bottom: 0.25rem; letter-spacing: -0.5px; }
+.stream-org-text { font-size: 1rem; color: var(--silver-matte); margin-bottom: 1.25rem; font-family: 'Space Mono', monospace; }
+.stream-body-narrative { font-size: 1rem; color: var(--text-dim); line-height: 1.8; }
+
+/* === SYMPOSIUM TRACKS (HONORS) === */
+.laurel-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+.laurel-node {
+    background: var(--glass-plate);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 18px;
+    padding: 2.25rem;
+    position: relative;
+    transition: all 0.4s var(--cubic-master);
+    padding-top: 3.5rem;
+}
+
+.laurel-node:hover { border-color: var(--silver-bright); transform: translateY(-5px); box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05); }
+.laurel-rank { font-size: 2.5rem; font-weight: 800; font-family: 'Space Mono', monospace; line-height: 1; margin-bottom: 1rem; }
+.rank-gold { color: var(--silver-bright); text-shadow: 0 0 20px var(--accent-glow); }
+.rank-silver { color: var(--silver-matte); text-shadow: 0 0 20px rgba(148, 163, 184, 0.1); }
+.rank-bronze { color: #52525b; }
+.rank-runner { color: #27272a; }
+
+.laurel-title { font-size: 1.15rem; font-weight: 700; color: var(--silver-bright); margin-bottom: 0.5rem; line-height: 1.4; letter-spacing: -0.3px; }
+.laurel-scope { font-size: 0.8rem; color: var(--silver-matte); margin-bottom: 0.75rem; font-family: 'Space Mono', monospace; font-weight: 700; }
+.laurel-provenance { font-size: 0.85rem; color: var(--text-dim); line-height: 1.65; }
+.laurel-date-stamp { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 0.65rem; font-family: 'Space Mono', monospace; color: var(--text-dim); letter-spacing: 1px; }
+
+/* === CERTIFICATION REGISTER LINES === */
+#credentials-vault { background: rgba(4, 4, 6, 0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.credential-pipeline { display: flex; flex-direction: column; gap: 1rem; }
+
+.credential-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--glass-plate);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    transition: all 0.3s var(--cubic-master);
+    flex-wrap: wrap;
+}
+
+.credential-row:hover { border-color: var(--silver-bright); background: rgba(255, 255, 255, 0.01); transform: translateX(6px); }
+.credential-details { flex: 1; min-width: 220px; }
+.credential-header-text { font-size: 1.05rem; font-weight: 700; color: var(--silver-bright); }
+.credential-authority { font-size: 0.8rem; color: var(--text-dim); font-family: 'Space Mono', monospace; margin-top: 4px; }
+.credential-temporal-marker { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--silver-matte); font-weight: 700; }
+
+/* === INTERFACE CONTACT OUTBOUND LINK REGION === */
+#terminal-contact-node { text-align: center; position: relative; }
+.contact-link-cluster { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 4rem; }
+
+.interface-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.1rem 2.25rem;
+    width: 100%;
+    max-width: 280px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-family: 'Space Mono', monospace;
+    transition: all 0.4s var(--cubic-master);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: rgba(2, 2, 4, 0.5);
+    color: var(--silver-bright);
+}
+
+.interface-button:hover { transform: translateY(-4px); border-color: var(--silver-bright); box-shadow: 0 15px 30px var(--accent-glow); color: var(--silver-bright); }
+.interface-button.direct-email { background: rgba(255, 255, 255, 0.03); color: #e4e4e7; border-color: rgba(255, 255, 255, 0.1); }
+.interface-button.youtube-broadcast { background: rgba(255, 255, 255, 0.02); color: #a1a1aa; border-color: rgba(255, 255, 255, 0.08); }
+
+footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.03); font-family: 'Space Mono', monospace; font-size: 0.75rem; color: rgba(148, 163, 184, 0.4); letter-spacing: 2px; line-height: 1.6; }
+
+/* === TRANSLATIONAL ACTIONS (FADES) === */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px) translateZ(0);
+    transition: opacity 1.1s cubic-bezier(0.215, 0.61, 0.355, 1), transform 1.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    will-change: transform, opacity;
+}
+
+.fade-in.visible { opacity: 1; transform: translateY(0) translateZ(0); }
+.divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent); }
+
+@keyframes blipTrigger { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.4; } }
+
+/* ========================================================
+   =================== SYSTEM DISPLAY SCALE ADAPTATIONS ===
+   ======================================================== */
+@media (min-width: 768px) {
+  .telemetry-grid { grid-template-columns: repeat(4, 1fr); }
+  .interface-button { width: auto; }
+  .credential-temporal-marker { margin-left: auto; }
+  .stream-node-card { padding: 3rem; }
+  .stream-left-interface { flex-direction: column; align-items: flex-start; justify-content: flex-start; border-bottom: none; padding-bottom: 0; width: 160px; flex-shrink: 0; }
+  .stream-node-card { flex-direction: row; gap: 3rem; }
+  .stream-right-interface { flex: 1; }
+}
+
+@media (max-width: 992px) {
+  header { padding: 1.25rem 1.5rem; }
+  .nav-matrix { gap: 1.5rem; }
+}
+
+@media (max-width: 540px) {
+  .nav-matrix { display: none; }
+  .telemetry-grid { gap: 1.5rem; padding-left: 1rem; }
+  .pipeline-node { padding: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="engine-canvas"></canvas>
+
+<header id="control-deck">
+  <div class="brand-kernel" onclick="window.scrollTo({top:0,behavior:'smooth'});">
+    <div class="brand-text">SUFIYAN</div>
+  </div>
+  <nav class="nav-matrix">
+    <a href="#skills-matrix" class="nav-node">Expertise</a>
+    <a href="#pipeline-production" class="nav-node">Deployments</a>
+    <a href="#experience-stream" class="nav-node">Journey</a>
+    <a href="#laurel-index" class="nav-node">Honours</a>
+    <a href="#terminal-contact-node" class="nav-node">Connect</a>
+  </nav>
+</header>
+
+<section id="hero-viewport">
+  <div class="hero-cluster fade-in">
+    <div class="status-badge">
+      <div class="signal-blip"></div>
+      <span>Open to Fresher AI/ML Roles (2026 Grid)</span>
+    </div>
+    
+    <h1 class="architect-title">
+      <span class="title-row primary">V. Mohammed</span>
+      <span class="title-row gradient">Sufiyan</span>
+    </h1>
+    
+    <p class="sub-mono">// DEEP LEARNING ARCHITECT & <span>SYSTEMS ENGINEER</span></p>
+    
+    <p class="manifesto-text">
+      Final Year BCA Student building production-ready AI architectures completely from scratch. 
+      Specialized in constructing native layers via the TensorFlow/Keras Functional API, orchestrating Python system debugging pipelines, 
+      and compiling local microservices that solve mathematical and classification realities at scale.
+    </p>
+    
+    <div class="telemetry-grid">
+      <div class="telemetry-node">
+        <span class="telemetry-data">14+</span>
+        <span class="telemetry-meta">DL Projects Deployed</span>
+      </div>
+      <div class="telemetry-node">
+        <span class="telemetry-data">99.7%</span>
+        <span class="telemetry-meta">Peak Frame Accuracy</span>
+      </div>
+      <div class="telemetry-node">
+        <span class="telemetry-data">5+</span>
+        <span class="telemetry-meta">Symposium Trophies</span>
+      </div>
+      <div class="telemetry-node">
+        <span class="telemetry-data">15+</span>
+        <span class="telemetry-meta">Core Algorithms</span>
+      </div>
+    </div>
+    
+    <div class="action-orchestrator">
+      <a href="#pipeline-production" class="hacker-trigger solid">Initialize Pipelines</a>
+      <a href="#terminal-contact-node" class="hacker-trigger wireframe">Secure Handshake</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="skills-matrix">
+  <div class="section-container fade-in">
+    <div class="section-header-panel">
+      <h2 class="panel-title">Core Technical <span>Matrix</span></h2>
+    </div>
+    
+    <div class="matrix-grid-skills">
+      <div class="cluster-card">
+        <div class="cluster-card-label">Neural Frameworks</div>
+        <div class="token-vault">
+          <span class="token">TensorFlow / Keras</span>
+          <span class="token">Functional API Layering</span>
+          <span class="token">PyTorch RL Classes</span>
+          <span class="token">Scikit-Learn</span>
+          <span class="token">OpenCV Engine</span>
+        </div>
+      </div>
+      
+      <div class="cluster-card">
+        <div class="cluster-card-label">Architectural Models</div>
+        <div class="token-vault">
+          <span class="token">BiLSTMs</span>
+          <span class="token">Custom CNN Arrays</span>
+          <span class="token">Deep Q-Networks (DQN)</span>
+          <span class="token">Transfer Learning Blocks</span>
+          <span class="token">GRU / Sequence Tracking</span>
+        </div>
+      </div>
+      
+      <div class="cluster-card">
+        <div class="cluster-card-label">Inference Deployment</div>
+        <div class="token-vault">
+          <span class="token">Streamlit Micro-GUIs</span>
+          <span class="token">Flask Gateway APIs</span>
+          <span class="token">Arduino Hardware Linkages</span>
+          <span class="token">PyInstaller Standalone Compilers</span>
+        </div>
+      </div>
+      
+      <div class="cluster-card">
+        <div class="cluster-card-label">Languages & Storage</div>
+        <div class="token-vault">
+          <span class="token">Python Advanced</span>
+          <span class="token">Semantic Syntax Diagnostics</span>
+          <span class="token">JavaScript</span>
+          <span class="token">SQL Relational Frameworks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="pipeline-production">
+  <div class="section-container fade-in">
+    <div class="section-header-panel">
+      <h2 class="panel-title">Production Model <span>Pipelines</span></h2>
+    </div>
+    
+    <div class="pipeline-stack">
+      <div class="pipeline-node">
+        <div class="node-meta-row">
+          <h3 class="node-title">DetectAI — Multi-Class Hybrid Text Authenticity Detector</h3>
+          <div class="node-badge-array">
+            <span class="sys-badge prime">NLP Tensor Array</span>
+            <span class="sys-badge active">Live Production</span>
+          </div>
+        </div>
+        <p class="node-summary">
+          Architected a rigorous text processing grid designed to classify synthetic machine iterations from traditional human semantic compositions. 
+          Bypassed common black-box boilerplate code blocks in favor of an explicit custom multi-layer BiLSTM configuration engineered to map context transitions. 
+          Benchmarked systematically against multiple optimized linear classifiers.
+        </p>
+        
+        <div class="svm-container">
+          <svg class="svm-svg" viewBox="0 0 400 200">
+            <line x1="20" y1="180" x2="380" y2="180" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <line x1="20" y1="20" x2="20" y2="180" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <line x1="60" y1="170" x2="340" y2="30" stroke="#a1a1aa" stroke-width="2.5" stroke-dasharray="4"/>
+            <line x1="90" y1="180" x2="370" y2="40" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <line x1="30" y1="160" x2="310" y2="20" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <circle cx="90" cy="130" r="5" fill="#71717a"/>
+            <circle cx="120" cy="150" r="5" fill="#71717a"/>
+            <circle cx="70" cy="95" r="5" fill="#71717a"/>
+            <circle cx="150" cy="115" r="5" fill="#71717a" stroke="#ffffff" stroke-width="1.5"/> <circle cx="280" cy="65" r="5" fill="#e4e4e7"/>
+            <circle cx="310" cy="45" r="5" fill="#e4e4e7"/>
+            <circle cx="250" cy="85" r="5" fill="#e4e4e7" stroke="#ffffff" stroke-width="1.5"/> <circle cx="330" cy="80" r="5" fill="#e4e4e7"/>
+            <text x="240" y="140" fill="#71717a" font-family="Space Mono" font-size="9">Class 01: Linear Classifiers</text>
+            <text x="240" y="155" fill="#e4e4e7" font-family="Space Mono" font-size="9">Class 02: BiLSTM Matrix Data</text>
+          </svg>
+        </div>
+
+        <div class="metric-dashboard">
+          <div class="dashboard-unit">
+            <span class="dashboard-val">99.7%</span>
+            <span class="dashboard-lbl">Cross-Val Max Score</span>
+          </div>
+          <div class="dashboard-unit">
+            <span class="dashboard-val">98.48%</span>
+            <span class="dashboard-lbl">BiLSTM Core Accuracy</span>
+          </div>
+        </div>
+        <div class="node-tech-index">
+          <span class="index-token">Python</span><span class="index-token">TF-IDF Processing</span><span class="index-token">BiLSTM Sequences</span><span class="index-token">XGBoost Layers</span><span class="index-token">Streamlit App Engine</span>
+        </div>
+        <a href="https://github.com/SUFIYAN2004/hybrid-text-detection" class="node-link-system">github.com/SUFIYAN2004/hybrid-text-detection</a>
+      </div>
+
+      <div class="pipeline-node">
+        <div class="node-meta-row">
+          <h3 class="node-title">Vision-Based Edge Waste Classification & Actuation System</h3>
+          <div class="node-badge-array">
+            <span class="sys-badge prime">Computer Vision</span>
+            <span class="sys-badge hardware">Hardware Matrix</span>
+          </div>
+        </div>
+        <p class="node-summary">
+          Assembled an automated waste sorting deployment optimizing a ResNet50V2 convolutional feature extraction pipeline. 
+          Processes incoming streaming frames in real-time, matching structures to target organic, recyclable, or toxic categories. 
+          Transfers classification codes directly via serial bus linkages onto a native Arduino Uno framework driving physical mechanical sorting gates.
+        </p>
+        <div class="metric-dashboard">
+          <div class="dashboard-unit">
+            <span class="dashboard-val">91.34%</span>
+            <span class="dashboard-lbl">Inference Frame Score</span>
+          </div>
+          <div class="dashboard-unit">
+            <span class="dashboard-val">3-Way</span>
+            <span class="dashboard-lbl">Physical Sorting Gates</span>
+          </div>
+        </div>
+        <div class="node-tech-index">
+          <span class="index-token">ResNet50V2 Architecture</span><span class="index-token">TensorFlow CV Engine</span><span class="index-token">Arduino Board Logic</span><span class="index-token">Serial Control Bus</span>
+        </div>
+        <a href="https://github.com/SUFIYAN2004/Vision_Based_Smart_Waste_Segregation_System" class="node-link-system">github.com/SUFIYAN2004/Vision_Based_Smart_Waste_Segregation_System</a>
+      </div>
+
+      <div class="pipeline-node">
+        <div class="node-meta-row">
+          <h3 class="node-title">ML Studio — End-to-End Automated Pipeline App</h3>
+          <div class="node-badge-array">
+            <span class="sys-badge prime">Full-Stack Data</span>
+            <span class="sys-badge active">Live Interface</span>
+          </div>
+        </div>
+        <p class="node-summary">
+          Engineered a comprehensive data modeling portal capable of accepting multi-variant data sets. 
+          Integrates a clean 18-step parsing and sanitation processor for text features alongside sequential deep architectures. 
+          Allows real-time model hyperparameter refinement and automatically packages optimized tracking parameter data fields into instantly downloadable run-time formats.
+        </p>
+        <div class="metric-dashboard">
+          <div class="dashboard-unit">
+            <span class="dashboard-val">15+</span>
+            <span class="dashboard-lbl">Linear/Deep Trackers</span>
+          </div>
+          <div class="dashboard-unit">
+            <span class="dashboard-val">18-Op</span>
+            <span class="dashboard-lbl">Sanitation Functions</span>
+          </div>
+        </div>
+        <div class="node-tech-index">
+          <span class="index-token">Streamlit Server</span><span class="index-token">Flask Core Framework</span><span class="index-token">CatBoost Blocks</span><span class="index-token">LightGBM Matrix</span>
+        </div>
+        <a href="https://github.com/SUFIYAN2004/Ml_Studio" class="node-link-system">github.com/SUFIYAN2004/Ml_Studio</a>
+      </div>
+
+      <div class="pipeline-node">
+        <div class="node-meta-row">
+          <h3 class="node-title">Jet Defender AI — Deep Reinforcement Learning Agent</h3>
+          <div class="node-badge-array">
+            <span class="sys-badge prime">Reinforcement Learning</span>
+          </div>
+        </div>
+        <p class="node-summary">
+          Formulated a tactical simulation interface driven by a native Deep Q-Network agent constructed from the ground up inside PyTorch components. 
+          Maps an intricate state matrix containing multiple scalar parameters onto unique operational action paths, using continuous experience replay buffers to maximize convergence rates.
+        </p>
+        <div class="metric-dashboard">
+          <div class="dashboard-unit">
+            <span class="dashboard-val">2,000+</span>
+            <span class="dashboard-lbl">Training Epochs</span>
+          </div>
+          <div class="dashboard-unit">
+            <span class="dashboard-val">100% Local</span>
+            <span class="dashboard-lbl">CPU Execution Rig</span>
+          </div>
+        </div>
+        <div class="node-tech-index">
+          <span class="index-token">PyTorch Classes</span><span class="index-token">DQN Framework</span><span class="index-token">Experience Replay Buffer</span><span class="index-token">Pygame Viewport</span>
+        </div>
+        <a href="https://github.com/SUFIYAN2004/Jet-Defender-AI-with-DQN" class="node-link-system">github.com/SUFIYAN2004/Jet-Defender-AI-with-DQN</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="experience-stream">
+  <div class="section-container fade-in">
+    <div class="section-header-panel">
+      <h2 class="panel-title">Professional <span>Timeline</span></h2>
+    </div>
+    
+    <div class="stream-pipeline">
+      <div class="stream-node-card">
+        <div class="stream-left-interface">
+          <div class="stream-timeline-stamp">2024 — PRESENT</div>
+          <span class="stream-tag-status">Active Pipeline</span>
+        </div>
+        <div class="stream-right-interface">
+          <h3 class="stream-title-text">Technical System Content Creator</h3>
+          <div class="stream-org-text">SufLearning YouTube Network</div>
+          <p class="stream-body-narrative">
+            Deconstruct and present algorithmic configurations, network training steps, and live model deployment steps for general public developer streams. 
+            Manage all aspects of production from concept mapping and writing scripts to video captures, edits, and final web asset packaging.
+          </p>
+          <a href="https://www.youtube.com/@SufLearning" class="node-link-system" style="margin-top:1rem">youtube.com/@SufLearning</a>
+        </div>
+      </div>
+      
+      <div class="stream-node-card">
+        <div class="stream-left-interface">
+          <div class="stream-timeline-stamp">2023 — 2026</div>
+          <span class="stream-tag-status">Final Phase</span>
+        </div>
+        <div class="stream-right-interface">
+          <h3 class="stream-title-text">Bachelor of Computer Applications (BCA)</h3>
+          <div class="stream-org-text">C. Abdul Hakeem College (Autonomous) · Thiruvalluvar University</div>
+          <p class="stream-body-narrative">
+            Core computational tracks encompassing logic layout patterns, clean database programming, structure definitions, and direct application setups. 
+            Maintained a deep focus on applied intelligence fields, producing multiple complex, stand-alone neural tracking frameworks over three academic cycles.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="laurel-index">
+  <div class="section-container fade-in">
+    <div class="section-header-panel">
+      <h2 class="panel-title">Symposium <span>Honours</span></h2>
+    </div>
+    
+    <div class="laurel-matrix">
+      <div class="laurel-node">
+        <div class="laurel-date-stamp">Feb 2026</div>
+        <div class="laurel-rank rank-gold">1st</div>
+        <h3 class="laurel-title">Technical Quiz — Wobbling Minds Championship</h3>
+        <div class="laurel-scope">BOS.CON 2K26 Intercollegiate Fest</div>
+        <p class="laurel-provenance">
+          Don Bosco College, Yelagiri Hills. Secured top championship ranking across intense, fast-paced technical testing rounds mapping systemic compute architecture matrices.
+        </p>
+      </div>
+
+      <div class="laurel-node">
+        <div class="laurel-date-stamp">Feb 2024</div>
+        <div class="laurel-rank rank-gold">1st</div>
+        <h3 class="laurel-title">State-Level Python Debugging Arena</h3>
+        <div class="laurel-scope">State Level IT Symposium</div>
+        <p class="laurel-provenance">
+          Global College of Arts & Science for Women, Veppur (Arcot). Evaluated on velocity of error vector tracking, semantic source restoration, and algorithmic code repairs under strict timeline constraints.
+        </p>
+      </div>
+
+      <div class="laurel-node">
+        <div class="laurel-date-stamp">2025</div>
+        <div class="laurel-rank rank-silver">2nd</div>
+        <h3 class="laurel-title">Code Surgeon — Advanced Python Programming</h3>
+        <div class="laurel-scope">MINDMESH'25 · National Level Symposium</div>
+        <p class="laurel-provenance">
+          Sacred Heart College (Autonomous), Tirupattur. Earned official podium placement for rapid resolution of hidden operational faults and broken script segments against competing teams.
+        </p>
+      </div>
+
+      <div class="laurel-node">
+        <div class="laurel-date-stamp">Feb 2024</div>
+        <div class="laurel-rank rank-silver">2nd</div>
+        <h3 class="laurel-title">Python Program Building Sprint</h3>
+        <div class="laurel-scope">Inter-College Symposium Framework</div>
+        <p class="laurel-provenance">
+          Designed, structured, and cleanly executed functional script operations completely within aggressive execution boundaries.
+        </p>
+      </div>
+
+      <div class="laurel-node">
+        <div class="laurel-date-stamp">Feb 16, 2024</div>
+        <div class="laurel-rank rank-bronze">3rd</div>
+        <h3 class="laurel-title">Python Diagnostics & Application Setup</h3>
+        <div class="laurel-scope">Voorhees College Symposium</div>
+        <p class="laurel-provenance">
+          Voorhees College, Vellore. Earned placement by clearing logical error constraints, marking the initial stepping stone of my competitive symposium tracker.
+        </p>
+      </div>
+
+      <div class="laurel-node">
+        <div class="laurel-date-stamp">2025</div>
+        <div class="laurel-rank rank-runner">4th</div>
+        <h3 class="laurel-title">Knowledge Knockout — National IT Quiz</h3>
+        <div class="laurel-scope">MINDMESH'25 · Sacred Heart College</div>
+        <p class="laurel-provenance">
+          Sacred Heart College (Autonomous), Tirupattur. Qualified directly into final rounds of technical evaluation paths against top regional programming clusters.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="credentials-vault">
+  <div class="section-container fade-in">
+    <div class="section-header-panel">
+      <h2 class="panel-title">Validated Certifications & <span>Workshops</span></h2>
+    </div>
+    
+    <div class="credential-pipeline">
+      <div class="credential-row">
+        <div class="credential-details">
+          <div class="credential-header-text">Deep Learning A-Z 2025 Frameworks</div>
+          <div class="credential-authority">Udemy Verified Certification</div>
+        </div>
+        <div class="credential-temporal-marker">2025</div>
+      </div>
+
+      <div class="credential-row">
+        <div class="credential-details">
+          <div class="credential-header-text">Artificial Intelligence A-Z Deep Models</div>
+          <div class="credential-authority">Udemy Verified Certification</div>
+        </div>
+        <div class="credential-temporal-marker">2025</div>
+      </div>
+
+      <div class="credential-row">
+        <div class="credential-details">
+          <div class="credential-header-text">Machine Learning & NLP Specialization</div>
+          <div class="credential-authority">Cognitive AI Labs</div>
+        </div>
+        <div class="credential-temporal-marker">2024</div>
+      </div>
+
+      <div class="credential-row">
+        <div class="credential-details">
+          <div class="credential-header-text">National Workshop: Cloud, Containers & Observability Infrastructure</div>
+          <div class="credential-authority">Auxilium College (Autonomous), Vellore · Active Tracking on Docker, Terraform, Kubernetes</div>
+        </div>
+        <div class="credential-temporal-marker">Oct 2025</div>
+      </div>
+
+      <div class="credential-row">
+        <div class="credential-details">
+          <div class="credential-header-text">SASDF-2025 International Conference on Sustainable AI Solutions</div>
+          <div class="credential-authority">Sree Abiraami Arts & Science College</div>
+        </div>
+        <div class="credential-temporal-marker">Aug 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="terminal-contact-node">
+  <div class="section-container fade-in">
+    <div class="section-header-panel">
+      <h2 class="panel-title">Initialize Terminal <span>Handshake</span></h2>
+    </div>
+    
+    <p style="color:var(--text-dim);font-size:1.1rem;line-height:1.8;max-width:550px;margin:0 auto 2.5rem">
+      Seeking fresh structural machine learning positions, deep validation tracking assignments, or collaborative open-source network development.
+    </p>
+    
+    <div class="contact-link-cluster">
+      <a href="mailto:mohammedsufiyanv718@gmail.com" class="interface-button direct-email">Connect via Email</a>
+      <a href="https://linkedin.com/in/mohammedsufiyanv" class="interface-button">Establish LinkedIn Link</a>
+      <a href="https://github.com/SUFIYAN2004" class="interface-button">{ } Verify GitHub Core</a>
+      <a href="https://www.youtube.com/@SufLearning" class="interface-button youtube-broadcast">Stream SufLearning Channel</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="opacity: 0.4;">Compiled with Precision · V. Mohammed Sufiyan · 2026</p>
+</footer>
+
+<script>
+// === PREMIUM CHROME MATTE PARTICLE DISPATCHER ENGINE ===
+const canvas = document.getElementById('engine-canvas');
+const ctx = canvas.getContext('2d');
+
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+
+const activeNodes = [];
+const interactionVector = { x: null, y: null, interactionRadius: 150 };
+
+window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+});
+
+window.addEventListener('mousemove', (event) => {
+    interactionVector.x = event.clientX;
+    interactionVector.y = event.clientY;
+});
+
+window.addEventListener('mouseout', () => {
+    interactionVector.x = null;
+    interactionVector.y = null;
+});
+
+class NeuralNode {
+    constructor() {
+        this.resetNodePosition();
+        this.deltaX = (Math.random() - 0.5) * 0.35;
+        this.deltaY = (Math.random() - 0.5) * 0.35;
+        this.nodeRadius = Math.random() * 2 + 0.5;
+    }
+    
+    resetNodePosition() {
+        this.posX = Math.random() * width;
+        this.posY = Math.random() * height;
+    }
+
+    computeMotion() {
+        this.posX += this.deltaX;
+        this.posY += this.deltaY;
+
+        if (this.posX < 0 || this.posX > width) this.deltaX *= -1;
+        if (this.posY < 0 || this.posY > height) this.deltaY *= -1;
+
+        if (interactionVector.x !== null && interactionVector.y !== null) {
+            let distanceX = interactionVector.x - this.posX;
+            let distanceY = interactionVector.y - this.posY;
+            let linearDistance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+            
+            if (linearDistance < interactionVector.interactionRadius) {
+                let scalingFactor = (interactionVector.interactionRadius - linearDistance) / interactionVector.interactionRadius;
+                this.posX -= (distanceX / linearDistance) * scalingFactor * 0.85;
+                this.posY -= (distanceY / linearDistance) * scalingFactor * 0.85;
+            }
+        }
+    }
+
+    renderNode() {
+        ctx.beginPath();
+        ctx.arc(this.posX, this.posY, this.nodeRadius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(161, 161, 170, 0.25)';
+        ctx.fill();
+    }
+}
+
+function operationalizeField() {
+    const computedDensity = Math.min(100, Math.floor((width * height) / 13000));
+    for (let index = 0; index < computedDensity; index++) {
+        activeNodes.push(new NeuralNode());
+    }
+}
+
+function processFrameRendering() {
+    ctx.clearRect(0, 0, width, height);
+    
+    // Minimal grid framework layout mapping
+    ctx.strokeStyle = 'rgba(228, 228, 231, 0.012)';
+    ctx.lineWidth = 0.5;
+    let baselineGridSpan = 80;
+    
+    for (let xCoord = 0; xCoord < width; xCoord += baselineGridSpan) {
+        ctx.beginPath(); ctx.moveTo(xCoord, 0); ctx.lineTo(xCoord, height); ctx.stroke();
+    }
+    for (let yCoord = 0; yCoord < height; yCoord += baselineGridSpan) {
+        ctx.beginPath(); ctx.moveTo(0, yCoord); ctx.lineTo(width, yCoord); ctx.stroke();
+    }
+
+    activeNodes.forEach(node => {
+        node.computeMotion();
+        node.renderNode();
+    });
+
+    // Synaptic link alignment connections lines mapping
+    for (let innerIndex = 0; innerIndex < activeNodes.length; innerIndex++) {
+        for (let targetIndex = innerIndex + 1; targetIndex < activeNodes.length; targetIndex++) {
+            let linkDiffX = activeNodes[innerIndex].posX - activeNodes[targetIndex].posX;
+            let linkDiffY = activeNodes[innerIndex].posY - activeNodes[targetIndex].posY;
+            let computedProximity = Math.sqrt(linkDiffX * linkDiffX + linkDiffY * linkDiffY);
+            
+            if (computedProximity < 120) {
+                ctx.beginPath();
+                ctx.moveTo(activeNodes[innerIndex].posX, activeNodes[innerIndex].posY);
+                ctx.lineTo(activeNodes[targetIndex].posX, activeNodes[targetIndex].posY);
+                ctx.strokeStyle = `rgba(228, 228, 231, ${0.12 * (1 - computedProximity / 120)})`;
+                ctx.lineWidth = 0.6;
+                ctx.stroke();
+            }
+        }
+    }
+    requestAnimationFrame(processFrameRendering);
+}
+
+operationalizeField();
+processFrameRendering();
+
+// === VIEWPORT DETECTION OBSERVER ===
+const trackingObserver = new IntersectionObserver((observedEntries) => {
+    observedEntries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.02 });
+
+document.querySelectorAll('.fade-in').forEach(targetElement => trackingObserver.observe(targetElement));
+
+// Fluid anchors re-routing maps routing logic
+document.querySelectorAll('a[href^="#"]').forEach(anchorNode => {
+    anchorNode.addEventListener('click', (clickEvent) => {
+        clickEvent.preventDefault();
+        const targetedId = anchorNode.getAttribute('href');
+        document.querySelector(targetedId)?.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+</script>
+</body>
+</html>
