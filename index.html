@@ -11,7 +11,6 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 :root {
     --bg-void: #020204;      /* Deep Onyx Black */
-    --bg-matrix: #0a0b0e;    /* Dark Steel Charcoal */
     --accent-core: #71717a;  /* Muted Zinc Silver */
     --accent-neon: #e4e4e7;  /* Brilliant Chrome Silver */
     --accent-glow: rgba(228, 228, 231, 0.2);
@@ -22,7 +21,7 @@
     --text-pure: #f4f4f5;    /* Liquid Silver Text */
     --text-dim: #71717a;     /* Muted Iron Text */
     --border-hacker: rgba(228, 228, 231, 0.15);
-    --glass-plate: rgba(10, 11, 14, 0.75);
+    --glass-plate: rgba(10, 11, 14, 0.65);
     --cubic-master: cubic-bezier(0.25, 1, 0.3, 1);
 }
 
@@ -40,7 +39,7 @@ body {
     position: relative;
 }
 
-/* === LAYER 0: CHROMIUM PARTICLE CONSTELLATION BACKGROUND === */
+/* === CINEMATIC BACKGROUND ENGINE (VIDEO GRAPHICS EFFECT) === */
 #engine-canvas {
     position: fixed;
     top: 0;
@@ -49,10 +48,9 @@ body {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
-    background: radial-gradient(circle at 50% 50%, var(--bg-matrix) 0%, var(--bg-void) 100%);
 }
 
-/* === LAYER 1: FLOATING CHROME NAVIGATION STRIP === */
+/* === FLOATING CHROME NAVIGATION STRIP === */
 header {
     position: fixed;
     top: 0;
@@ -63,10 +61,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(2, 2, 4, 0.6);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    border-bottom: 1px solid rgba(228, 228, 231, 0.08);
+    background: rgba(2, 2, 4, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(228, 228, 231, 0.05);
     transition: all 0.4s var(--cubic-master);
 }
 
@@ -123,7 +121,7 @@ header {
     opacity: 1;
 }
 
-/* === LAYER 2: INTRODUCTORY HERO SECTOR === */
+/* === INTRODUCTORY HERO SECTOR === */
 #hero-viewport {
     min-height: 100vh;
     display: flex;
@@ -143,7 +141,7 @@ header {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    background: rgba(228, 228, 231, 0.03);
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--border-hacker);
     padding: 0.6rem 1.4rem;
     border-radius: 100px;
@@ -341,11 +339,11 @@ section {
 
 .cluster-card {
     background: var(--glass-plate);
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.02);
     border-radius: 16px;
     padding: 2rem;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     transition: all 0.5s var(--cubic-master);
 }
 
@@ -372,8 +370,8 @@ section {
 }
 
 .token {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(148, 163, 184, 0.15);
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(148, 163, 184, 0.12);
     padding: 0.4rem 0.8rem;
     border-radius: 6px;
     font-size: 0.75rem;
@@ -396,7 +394,7 @@ section {
 
 .pipeline-node {
     background: var(--glass-plate);
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.02);
     border-radius: 24px;
     padding: 3rem;
     backdrop-filter: blur(25px);
@@ -412,7 +410,7 @@ section {
     inset: 0;
     border-radius: 24px;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent 40%, transparent 60%, rgba(248, 250, 252, 0.15));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 40%, transparent 60%, rgba(248, 250, 252, 0.12));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -422,9 +420,9 @@ section {
 }
 
 .pipeline-node:hover {
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.15);
     transform: translateY(-8px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
 }
 
 .pipeline-node:hover::after {
@@ -463,9 +461,9 @@ section {
     text-transform: uppercase;
 }
 
-.sys-badge.prime { background: rgba(255, 255, 255, 0.08); color: var(--silver-bright); border: 1px solid rgba(255, 255, 255, 0.15); }
-.sys-badge.active { background: rgba(16, 185, 129, 0.08); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.2); }
-.sys-badge.hardware { background: rgba(255, 255, 255, 0.05); color: var(--silver-matte); border: 1px solid rgba(255, 255, 255, 0.1); }
+.sys-badge.prime { background: rgba(255, 255, 255, 0.05); color: var(--silver-bright); border: 1px solid rgba(255, 255, 255, 0.1); }
+.sys-badge.active { background: rgba(16, 185, 129, 0.05); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.15); }
+.sys-badge.hardware { background: rgba(255, 255, 255, 0.03); color: var(--silver-matte); border: 1px solid rgba(255, 255, 255, 0.08); }
 
 .node-summary {
     font-size: 1.05rem;
@@ -483,7 +481,7 @@ section {
     padding: 1.25rem 2rem;
     background: rgba(255, 255, 255, 0.01);
     border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .dashboard-unit { display: flex; flex-direction: column; }
@@ -491,7 +489,7 @@ section {
 .dashboard-lbl { font-size: 0.65rem; color: var(--text-dim); letter-spacing: 1px; margin-top: 4px; text-transform: uppercase; font-family: 'Space Mono', monospace; }
 
 .node-tech-index { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.index-token { font-size: 0.65rem; font-family: 'Space Mono', monospace; color: var(--silver-matte); background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 0.2rem 0.6rem; border-radius: 4px; }
+.index-token { font-size: 0.65rem; font-family: 'Space Mono', monospace; color: var(--silver-matte); background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.04); padding: 0.2rem 0.6rem; border-radius: 4px; }
 
 .node-link-system {
     display: inline-flex;
@@ -509,12 +507,12 @@ section {
 .node-link-system:hover { color: var(--silver-bright); transform: translateX(4px); }
 .node-link-system::after { content: ' ↗'; font-size: 1em; font-weight: bold; }
 
-/* === SVM ALGORITHM REPRESENTATION GRAPHIC === */
+/* === SVM DIAGRAM SEPARATOR === */
 .svm-container {
     margin: 2.5rem 0 1.5rem 0;
     padding: 2rem;
     background: rgba(255, 255, 255, 0.01);
-    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border: 1px dashed rgba(255, 255, 255, 0.06);
     border-radius: 14px;
     display: flex;
     flex-direction: column;
@@ -527,23 +525,25 @@ section {
 }
 
 /* === EXPERIENCE TIMELINE ARCHIVE === */
-#experience-stream { background: rgba(4, 4, 6, 0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+#experience-stream { background: rgba(2, 2, 4, 0.2); }
 .stream-pipeline { display: flex; flex-direction: column; gap: 2rem; }
 
 .stream-node-card {
     background: var(--glass-plate);
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.02);
     border-radius: 20px;
     padding: 2.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
 }
 
-.stream-node-card:hover { border-color: rgba(148, 163, 184, 0.3); }
-.stream-left-interface { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.04); padding-bottom: 1.25rem; }
+.stream-node-card:hover { border-color: rgba(148, 163, 184, 0.2); }
+.stream-left-interface { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.03); padding-bottom: 1.25rem; }
 .stream-timeline-stamp { font-family: 'Space Mono', monospace; font-size: 0.9rem; color: var(--silver-bright); letter-spacing: 1px; font-weight: 700; }
-.stream-tag-status { display: inline-block; padding: 0.25rem 0.85rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 4px; font-size: 0.65rem; font-family: 'Space Mono', monospace; color: var(--silver-matte); text-transform: uppercase; }
+.stream-tag-status { display: inline-block; padding: 0.25rem 0.85rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; font-size: 0.65rem; font-family: 'Space Mono', monospace; color: var(--silver-matte); text-transform: uppercase; }
 
 .stream-right-interface { width: 100%; }
 .stream-title-text { font-size: 1.4rem; font-weight: 700; color: var(--silver-bright); margin-bottom: 0.25rem; letter-spacing: -0.5px; }
@@ -554,18 +554,20 @@ section {
 .laurel-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
 .laurel-node {
     background: var(--glass-plate);
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.02);
     border-radius: 18px;
     padding: 2.25rem;
     position: relative;
     transition: all 0.4s var(--cubic-master);
     padding-top: 3.5rem;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
 }
 
-.laurel-node:hover { border-color: var(--silver-bright); transform: translateY(-5px); box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05); }
+.laurel-node:hover { border-color: var(--silver-bright); transform: translateY(-5px); box-shadow: 0 15px 35px rgba(255, 255, 255, 0.04); }
 .laurel-rank { font-size: 2.5rem; font-weight: 800; font-family: 'Space Mono', monospace; line-height: 1; margin-bottom: 1rem; }
 .rank-gold { color: var(--silver-bright); text-shadow: 0 0 20px var(--accent-glow); }
-.rank-silver { color: var(--silver-matte); text-shadow: 0 0 20px rgba(148, 163, 184, 0.1); }
+.rank-silver { color: var(--silver-matte); text-shadow: 0 0 20px rgba(148, 163, 184, 0.05); }
 .rank-bronze { color: #52525b; }
 .rank-runner { color: #27272a; }
 
@@ -574,8 +576,8 @@ section {
 .laurel-provenance { font-size: 0.85rem; color: var(--text-dim); line-height: 1.65; }
 .laurel-date-stamp { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 0.65rem; font-family: 'Space Mono', monospace; color: var(--text-dim); letter-spacing: 1px; }
 
-/* === CERTIFICATION REGISTER LINES === */
-#credentials-vault { background: rgba(4, 4, 6, 0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+/* === CERTIFICATION VAULT === */
+#credentials-vault { background: rgba(2, 2, 4, 0.2); }
 .credential-pipeline { display: flex; flex-direction: column; gap: 1rem; }
 
 .credential-row {
@@ -584,10 +586,12 @@ section {
     gap: 1.5rem;
     padding: 1.5rem;
     background: var(--glass-plate);
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.02);
     border-radius: 14px;
     transition: all 0.3s var(--cubic-master);
     flex-wrap: wrap;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
 }
 
 .credential-row:hover { border-color: var(--silver-bright); background: rgba(255, 255, 255, 0.01); transform: translateX(6px); }
@@ -614,16 +618,18 @@ section {
     font-weight: 700;
     font-family: 'Space Mono', monospace;
     transition: all 0.4s var(--cubic-master);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    background: rgba(2, 2, 4, 0.5);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    background: rgba(2, 2, 4, 0.3);
     color: var(--silver-bright);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .interface-button:hover { transform: translateY(-4px); border-color: var(--silver-bright); box-shadow: 0 15px 30px var(--accent-glow); color: var(--silver-bright); }
-.interface-button.direct-email { background: rgba(255, 255, 255, 0.03); color: #e4e4e7; border-color: rgba(255, 255, 255, 0.1); }
-.interface-button.youtube-broadcast { background: rgba(255, 255, 255, 0.02); color: #a1a1aa; border-color: rgba(255, 255, 255, 0.08); }
+.interface-button.direct-email { background: rgba(255, 255, 255, 0.02); color: #e4e4e7; border-color: rgba(255, 255, 255, 0.08); }
+.interface-button.youtube-broadcast { background: rgba(255, 255, 255, 0.01); color: #a1a1aa; border-color: rgba(255, 255, 255, 0.05); }
 
-footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.03); font-family: 'Space Mono', monospace; font-size: 0.75rem; color: rgba(148, 163, 184, 0.4); letter-spacing: 2px; line-height: 1.6; }
+footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.02); font-family: 'Space Mono', monospace; font-size: 0.75rem; color: rgba(148, 163, 184, 0.3); letter-spacing: 2px; line-height: 1.6; }
 
 /* === TRANSLATIONAL ACTIONS (FADES) === */
 .fade-in {
@@ -634,13 +640,11 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
 }
 
 .fade-in.visible { opacity: 1; transform: translateY(0) translateZ(0); }
-.divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent); }
+.divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent); }
 
 @keyframes blipTrigger { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.4; } }
 
-/* ========================================================
-   =================== SYSTEM DISPLAY SCALE ADAPTATIONS ===
-   ======================================================== */
+/* === DISPLAY RESPONSIVENESS === */
 @media (min-width: 768px) {
   .telemetry-grid { grid-template-columns: repeat(4, 1fr); }
   .interface-button { width: auto; }
@@ -665,6 +669,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
 </head>
 <body>
 
+<!-- hardware acceleration dynamic fluid background engine node -->
 <canvas id="engine-canvas"></canvas>
 
 <header id="control-deck">
@@ -695,9 +700,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
     <p class="sub-mono">// DEEP LEARNING ARCHITECT & <span>SYSTEMS ENGINEER</span></p>
     
     <p class="manifesto-text">
-      Final Year BCA Student building production-ready AI architectures completely from scratch. 
-      Specialized in constructing native layers via the TensorFlow/Keras Functional API, orchestrating Python system debugging pipelines, 
-      and compiling local microservices that solve mathematical and classification realities at scale.
+      AI/ML Engineer AI with hands on experience building end-to-end AI applications across NLP, computer vision, and deep learning using Python, TensorFlow, and PyTorch.
     </p>
     
     <div class="telemetry-grid">
@@ -789,6 +792,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
     </div>
     
     <div class="pipeline-stack">
+      <!-- DETECT AI -->
       <div class="pipeline-node">
         <div class="node-meta-row">
           <h3 class="node-title">DetectAI — Multi-Class Hybrid Text Authenticity Detector</h3>
@@ -805,17 +809,20 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
         
         <div class="svm-container">
           <svg class="svm-svg" viewBox="0 0 400 200">
-            <line x1="20" y1="180" x2="380" y2="180" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-            <line x1="20" y1="20" x2="20" y2="180" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-            <line x1="60" y1="170" x2="340" y2="30" stroke="#a1a1aa" stroke-width="2.5" stroke-dasharray="4"/>
-            <line x1="90" y1="180" x2="370" y2="40" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-            <line x1="30" y1="160" x2="310" y2="20" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-            <circle cx="90" cy="130" r="5" fill="#71717a"/>
-            <circle cx="120" cy="150" r="5" fill="#71717a"/>
-            <circle cx="70" cy="95" r="5" fill="#71717a"/>
-            <circle cx="150" cy="115" r="5" fill="#71717a" stroke="#ffffff" stroke-width="1.5"/> <circle cx="280" cy="65" r="5" fill="#e4e4e7"/>
+            <line x1="20" y1="180" x2="380" y2="180" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <line x1="20" y1="20" x2="20" y2="180" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <line x1="60" y1="170" x2="340" y2="30" stroke="#71717a" stroke-width="2.5" stroke-dasharray="4"/>
+            <line x1="90" y1="180" x2="370" y2="40" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <line x1="30" y1="160" x2="310" y2="20" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <circle cx="90" cy="130" r="5" fill="#52525b"/>
+            <circle cx="120" cy="150" r="5" fill="#52525b"/>
+            <circle cx="70" cy="95" r="5" fill="#52525b"/>
+            <circle cx="150" cy="115" r="5" fill="#52525b" stroke="#ffffff" stroke-width="1.5"/>
+            
+            <circle cx="280" cy="65" r="5" fill="#e4e4e7"/>
             <circle cx="310" cy="45" r="5" fill="#e4e4e7"/>
-            <circle cx="250" cy="85" r="5" fill="#e4e4e7" stroke="#ffffff" stroke-width="1.5"/> <circle cx="330" cy="80" r="5" fill="#e4e4e7"/>
+            <circle cx="250" cy="85" r="5" fill="#e4e4e7" stroke="#ffffff" stroke-width="1.5"/>
+            <circle cx="330" cy="80" r="5" fill="#e4e4e7"/>
             <text x="240" y="140" fill="#71717a" font-family="Space Mono" font-size="9">Class 01: Linear Classifiers</text>
             <text x="240" y="155" fill="#e4e4e7" font-family="Space Mono" font-size="9">Class 02: BiLSTM Matrix Data</text>
           </svg>
@@ -837,6 +844,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
         <a href="https://github.com/SUFIYAN2004/hybrid-text-detection" class="node-link-system">github.com/SUFIYAN2004/hybrid-text-detection</a>
       </div>
 
+      <!-- WASTE SEGREGATION -->
       <div class="pipeline-node">
         <div class="node-meta-row">
           <h3 class="node-title">Vision-Based Edge Waste Classification & Actuation System</h3>
@@ -866,6 +874,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
         <a href="https://github.com/SUFIYAN2004/Vision_Based_Smart_Waste_Segregation_System" class="node-link-system">github.com/SUFIYAN2004/Vision_Based_Smart_Waste_Segregation_System</a>
       </div>
 
+      <!-- ML STUDIO -->
       <div class="pipeline-node">
         <div class="node-meta-row">
           <h3 class="node-title">ML Studio — End-to-End Automated Pipeline App</h3>
@@ -895,6 +904,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
         <a href="https://github.com/SUFIYAN2004/Ml_Studio" class="node-link-system">github.com/SUFIYAN2004/Ml_Studio</a>
       </div>
 
+      <!-- JET DEFENDER -->
       <div class="pipeline-node">
         <div class="node-meta-row">
           <h3 class="node-title">Jet Defender AI — Deep Reinforcement Learning Agent</h3>
@@ -956,7 +966,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
           <span class="stream-tag-status">Final Phase</span>
         </div>
         <div class="stream-right-interface">
-          <h3 class="stream-title-text">Bachelor of Computer Applications (BCA)</h3>
+          <h3 class="stream-title-text">Applied AI Systems Development</h3>
           <div class="stream-org-text">C. Abdul Hakeem College (Autonomous) · Thiruvalluvar University</div>
           <p class="stream-body-narrative">
             Core computational tracks encompassing logic layout patterns, clean database programming, structure definitions, and direct application setups. 
@@ -977,6 +987,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
     </div>
     
     <div class="laurel-matrix">
+      <!-- 1st Prize Bosco -->
       <div class="laurel-node">
         <div class="laurel-date-stamp">Feb 2026</div>
         <div class="laurel-rank rank-gold">1st</div>
@@ -987,6 +998,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
         </p>
       </div>
 
+      <!-- 1st Prize Global -->
       <div class="laurel-node">
         <div class="laurel-date-stamp">Feb 2024</div>
         <div class="laurel-rank rank-gold">1st</div>
@@ -997,6 +1009,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
         </p>
       </div>
 
+      <!-- 2nd Prize Sacred Heart -->
       <div class="laurel-node">
         <div class="laurel-date-stamp">2025</div>
         <div class="laurel-rank rank-silver">2nd</div>
@@ -1007,6 +1020,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
         </p>
       </div>
 
+      <!-- 2nd Prize Building -->
       <div class="laurel-node">
         <div class="laurel-date-stamp">Feb 2024</div>
         <div class="laurel-rank rank-silver">2nd</div>
@@ -1017,6 +1031,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
         </p>
       </div>
 
+      <!-- 3rd Prize Voorhees -->
       <div class="laurel-node">
         <div class="laurel-date-stamp">Feb 16, 2024</div>
         <div class="laurel-rank rank-bronze">3rd</div>
@@ -1027,6 +1042,7 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
         </p>
       </div>
 
+      <!-- 4th Prize Quiz -->
       <div class="laurel-node">
         <div class="laurel-date-stamp">2025</div>
         <div class="laurel-rank rank-runner">4th</div>
@@ -1114,127 +1130,142 @@ footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,
 </section>
 
 <footer>
-  <p style="opacity: 0.4;">Compiled with Precision · V. Mohammed Sufiyan · 2026</p>
+  <p style="opacity: 0.3;">V. Mohammed Sufiyan · 2026</p>
 </footer>
 
 <script>
-// === PREMIUM CHROME MATTE PARTICLE DISPATCHER ENGINE ===
+// === CINEMATIC BACKGROUND ENGINE (BIO-LUMINESCENT JELLYFISH FLUIDITY & TRAVELING BEAMS) ===
 const canvas = document.getElementById('engine-canvas');
 const ctx = canvas.getContext('2d');
 
 let width = canvas.width = window.innerWidth;
 let height = canvas.height = window.innerHeight;
 
-const activeNodes = [];
-const interactionVector = { x: null, y: null, interactionRadius: 150 };
-
 window.addEventListener('resize', () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
 });
 
-window.addEventListener('mousemove', (event) => {
-    interactionVector.x = event.clientX;
-    interactionVector.y = event.clientY;
-});
+const fluidBlobs = [];
+const lightBeams = [];
 
-window.addEventListener('mouseout', () => {
-    interactionVector.x = null;
-    interactionVector.y = null;
-});
-
-class NeuralNode {
+class BioluminescentBlob {
     constructor() {
-        this.resetNodePosition();
-        this.deltaX = (Math.random() - 0.5) * 0.35;
-        this.deltaY = (Math.random() - 0.5) * 0.35;
-        this.nodeRadius = Math.random() * 2 + 0.5;
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.baseRadius = Math.random() * 120 + 80;
+        this.radius = this.baseRadius;
+        this.vx = (Math.random() - 0.5) * 0.25;
+        this.vy = (Math.random() - 0.5) * 0.25;
+        this.pulseSpeed = Math.random() * 0.01 + 0.005;
+        this.pulseAngle = Math.random() * Math.PI;
+        this.alpha = Math.random() * 0.04 + 0.02;
     }
-    
-    resetNodePosition() {
-        this.posX = Math.random() * width;
-        this.posY = Math.random() * height;
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        
+        if (this.x < -100) this.x = width + 100;
+        if (this.x > width + 100) this.x = -100;
+        if (this.y < -100) this.y = height + 100;
+        if (this.y > height + 100) this.y = -100;
+
+        this.pulseAngle += this.pulseSpeed;
+        this.radius = this.baseRadius + Math.sin(this.pulseAngle) * 25;
     }
+    draw() {
+        ctx.save();
+        let gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${this.alpha * 1.5})`);
+        gradient.addColorStop(0.3, `rgba(161, 161, 170, ${this.alpha})`);
+        gradient.addColorStop(0.7, `rgba(39, 39, 42, ${this.alpha * 0.3})`);
+        gradient.addColorStop(1, 'rgba(2, 2, 4, 0)');
+        
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+}
 
-    computeMotion() {
-        this.posX += this.deltaX;
-        this.posY += this.deltaY;
-
-        if (this.posX < 0 || this.posX > width) this.deltaX *= -1;
-        if (this.posY < 0 || this.posY > height) this.deltaY *= -1;
-
-        if (interactionVector.x !== null && interactionVector.y !== null) {
-            let distanceX = interactionVector.x - this.posX;
-            let distanceY = interactionVector.y - this.posY;
-            let linearDistance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-            
-            if (linearDistance < interactionVector.interactionRadius) {
-                let scalingFactor = (interactionVector.interactionRadius - linearDistance) / interactionVector.interactionRadius;
-                this.posX -= (distanceX / linearDistance) * scalingFactor * 0.85;
-                this.posY -= (distanceY / linearDistance) * scalingFactor * 0.85;
-            }
+class TravelingLightBeam {
+    constructor() {
+        this.reset();
+        this.y = Math.random() * height;
+    }
+    reset() {
+        this.x = -200;
+        this.length = Math.random() * 250 + 150;
+        this.speed = Math.random() * 2.5 + 1.2;
+        this.thickness = Math.random() * 1.5 + 0.5;
+        this.alpha = Math.random() * 0.08 + 0.03;
+    }
+    update() {
+        this.x += this.speed;
+        if (this.x > width + 200) {
+            this.reset();
+            this.y = Math.random() * height;
         }
     }
-
-    renderNode() {
+    draw() {
+        ctx.save();
+        let gradient = ctx.createLinearGradient(this.x, this.y, this.x + this.length, this.y);
+        gradient.addColorStop(0, 'rgba(2, 2, 4, 0)');
+        gradient.addColorStop(0.5, `rgba(244, 244, 245, ${this.alpha})`);
+        gradient.addColorStop(1, 'rgba(2, 2, 4, 0)');
+        
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = this.thickness;
         ctx.beginPath();
-        ctx.arc(this.posX, this.posY, this.nodeRadius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(161, 161, 170, 0.25)';
-        ctx.fill();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x + this.length, this.y);
+        ctx.stroke();
+        ctx.restore();
     }
 }
 
-function operationalizeField() {
-    const computedDensity = Math.min(100, Math.floor((width * height) / 13000));
-    for (let index = 0; index < computedDensity; index++) {
-        activeNodes.push(new NeuralNode());
+function initBackgroundEngine() {
+    const totalBlobs = Math.min(8, Math.floor(width / 200));
+    for (let i = 0; i < totalBlobs; i++) {
+        fluidBlobs.push(new BioluminescentBlob());
+    }
+    const totalBeams = Math.min(12, Math.floor(height / 80));
+    for (let j = 0; j < totalBeams; j++) {
+        lightBeams.push(new TravelingLightBeam());
     }
 }
 
-function processFrameRendering() {
-    ctx.clearRect(0, 0, width, height);
-    
-    // Minimal grid framework layout mapping
-    ctx.strokeStyle = 'rgba(228, 228, 231, 0.012)';
+function renderBackgroundPipeline() {
+    ctx.fillStyle = '#020204';
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.strokeStyle = 'rgba(244, 244, 245, 0.004)';
     ctx.lineWidth = 0.5;
-    let baselineGridSpan = 80;
-    
-    for (let xCoord = 0; xCoord < width; xCoord += baselineGridSpan) {
-        ctx.beginPath(); ctx.moveTo(xCoord, 0); ctx.lineTo(xCoord, height); ctx.stroke();
+    let gridSize = 90;
+    for (let x = 0; x < width; x += gridSize) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
     }
-    for (let yCoord = 0; yCoord < height; yCoord += baselineGridSpan) {
-        ctx.beginPath(); ctx.moveTo(0, yCoord); ctx.lineTo(width, yCoord); ctx.stroke();
+    for (let y = 0; y < height; y += gridSize) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
     }
 
-    activeNodes.forEach(node => {
-        node.computeMotion();
-        node.renderNode();
+    fluidBlobs.forEach(blob => {
+        blob.update();
+        blob.draw();
     });
 
-    // Synaptic link alignment connections lines mapping
-    for (let innerIndex = 0; innerIndex < activeNodes.length; innerIndex++) {
-        for (let targetIndex = innerIndex + 1; targetIndex < activeNodes.length; targetIndex++) {
-            let linkDiffX = activeNodes[innerIndex].posX - activeNodes[targetIndex].posX;
-            let linkDiffY = activeNodes[innerIndex].posY - activeNodes[targetIndex].posY;
-            let computedProximity = Math.sqrt(linkDiffX * linkDiffX + linkDiffY * linkDiffY);
-            
-            if (computedProximity < 120) {
-                ctx.beginPath();
-                ctx.moveTo(activeNodes[innerIndex].posX, activeNodes[innerIndex].posY);
-                ctx.lineTo(activeNodes[targetIndex].posX, activeNodes[targetIndex].posY);
-                ctx.strokeStyle = `rgba(228, 228, 231, ${0.12 * (1 - computedProximity / 120)})`;
-                ctx.lineWidth = 0.6;
-                ctx.stroke();
-            }
-        }
-    }
-    requestAnimationFrame(processFrameRendering);
+    lightBeams.forEach(beam => {
+        beam.update();
+        beam.draw();
+    });
+
+    requestAnimationFrame(renderBackgroundPipeline);
 }
 
-operationalizeField();
-processFrameRendering();
+initBackgroundEngine();
+renderBackgroundPipeline();
 
-// === VIEWPORT DETECTION OBSERVER ===
 const trackingObserver = new IntersectionObserver((observedEntries) => {
     observedEntries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1245,7 +1276,6 @@ const trackingObserver = new IntersectionObserver((observedEntries) => {
 
 document.querySelectorAll('.fade-in').forEach(targetElement => trackingObserver.observe(targetElement));
 
-// Fluid anchors re-routing maps routing logic
 document.querySelectorAll('a[href^="#"]').forEach(anchorNode => {
     anchorNode.addEventListener('click', (clickEvent) => {
         clickEvent.preventDefault();
